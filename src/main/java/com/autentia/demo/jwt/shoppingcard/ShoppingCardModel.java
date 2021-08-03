@@ -6,11 +6,15 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.autentia.demo.jwt.article.ArticleModel;
 import com.autentia.demo.jwt.usuario.Usuario;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+
 
 
 
@@ -36,6 +40,11 @@ public class ShoppingCardModel {
 	@OneToOne(targetEntity = Usuario.class, mappedBy = "id")
 	@JsonBackReference 
 	private Usuario user;
+	
+	@OneToMany(targetEntity = ArticleModel.class, mappedBy = "id")
+	@JsonManagedReference
+	private List<ArticleModel> articles;
+	
 
 	public long getId() {
 		return id;

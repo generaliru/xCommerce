@@ -9,7 +9,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.autentia.demo.jwt.shoppingcard.ShoppingCardModel;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+
 
 @Entity
 @Table(name = "articles")
@@ -52,6 +58,10 @@ public class ArticleModel {
 	/*Es muy probable que no exceda los 10k elementos*/
 	@Column(nullable = false, length = 4, name = "stock")
 	private Integer stock;
+	
+	@ManyToOne
+	@JsonBackReference //o se puede usar @JsonIgnore
+	private ShoppingCardModel carts;
 
 	public long getId() {
 		return id;
