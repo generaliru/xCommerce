@@ -1,4 +1,4 @@
-package article;
+package com.autentia.demo.jwt.article;
 
 import java.util.ArrayList;
 
@@ -13,12 +13,6 @@ public interface ArticleRepository extends CrudRepository<ArticleModel , Long>{
 	 * @Param name String that representate name of the article.
 	 * */
 	public abstract ArrayList<ArticleModel> findByNameContaining(String name);
-	
-	/**
-	 * Obtains articles in function of tag contains in the Query
-	 * @Param tag String that representate tag of the article.
-	 * */
-	public abstract ArrayList<ArticleModel> findByTag(String tag);
 	
 	/**
 	 * Obtains articles in function of Category contains in the Query

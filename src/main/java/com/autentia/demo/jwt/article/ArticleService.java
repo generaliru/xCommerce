@@ -1,4 +1,4 @@
-package article;
+package com.autentia.demo.jwt.article;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -29,14 +29,16 @@ public class ArticleService {
 		String name = article.getName();
 		Float price = article.getPrice();
 		String category = article.getCategory();
-		String tag = article.getTag();
 		String description = article.getDescription();
-		String img = article.getImg();
+		String img1 = article.getImg1();
+		String img2 = article.getImg2();
+		String img3 = article.getImg3();
+		String img4 = article.getImg4();
 		Integer stock = article.getStock();
 		
 		/*Comprobe if all is ok*/
-		if(name!=null && price !=null && category!=null && tag!=null 
-			&& description!=null && img!=null && stock!=null) {
+		if(name!=null && price !=null && category!=null && 
+				description!=null && img1!=null && img2!=null && img3!=null && stock!=null) {
 			return articleRepository.save(article);
 		}
 		
@@ -74,15 +76,6 @@ public class ArticleService {
 	 * */
 	public ArrayList<ArticleModel> getArticlesByName(String name) {
 		return articleRepository.findByNameContaining(name);
-	}
-	
-	/**
-	 * Get all articles by Tag
-	 * @param Tag It is the Tag that will be used in the query 
-	 * @return ArrayList<ArticleModel> Is all of Articles obtains in the query
-	 * */
-	public ArrayList<ArticleModel> getArticlesByTag(String tag) {
-		return articleRepository.findByTag(tag);
 	}
 	
 	/**
