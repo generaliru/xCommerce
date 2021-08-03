@@ -1,7 +1,7 @@
-package article;
-
+package com.autentia.demo.jwt.article;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.autentia.demo.jwt.usuario.Usuario;
 
 @RestController
 @RequestMapping(path="/article")
@@ -35,7 +37,7 @@ public class ArticleController {
 	 * @param article is an Article that could save.
 	 * @return article saved.
 	 * */
-	@PostMapping
+	@PostMapping("/articles/")
 	public ArticleModel saveUser(@RequestBody ArticleModel article) {
 		return articleService.saveArticle(article);
 	}
@@ -75,16 +77,6 @@ public class ArticleController {
 	@GetMapping(path="/name")
 	public ArrayList<ArticleModel> getArticlesByName( @RequestParam(value = "name" , defaultValue="") String name){
 		return articleService.getArticlesByName(name);
-	}
-	
-	/**
-	 * Catch the content of Protocol GET
-	 * @param tag is the param to search with the query
-	 * @return Articles all articles obtains in the query
-	 * */
-	@GetMapping(path="/tag")
-	public ArrayList<ArticleModel> getArticlesByTag( @RequestParam(value = "tag" , defaultValue="") String tag){
-		return articleService.getArticlesByTag(tag);
 	}
 	
 	/**
