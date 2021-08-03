@@ -9,7 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.autentia.demo.jwt.shoppingcard.ShoppingCardModel;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "articles")
@@ -34,25 +38,29 @@ public class ArticleModel {
 	private String description;
 	
 	/*Las url no suelen exceder los 200 caracteres, pero es mejor dar mayor margen*/
-	@Column(nullable = false, length = 250, name = "img")
+	@Column(nullable = false, length = 250, name = "img1")
 	private String img1;
 
 	/*Las url no suelen exceder los 200 caracteres, pero es mejor dar mayor margen*/
-	@Column(nullable = false, length = 250, name = "img")
+	@Column(nullable = false, length = 250, name = "img2")
 	private String img2;
 	
 	/*Las url no suelen exceder los 200 caracteres, pero es mejor dar mayor margen*/
-	@Column(nullable = false, length = 250, name = "img")
+	@Column(nullable = false, length = 250, name = "img3")
 	private String img3;
 	
 	/*Las url no suelen exceder los 200 caracteres, pero es mejor dar mayor margen*/
-	@Column(nullable = false, length = 250, name = "img")
+	@Column(nullable = false, length = 250, name = "img4")
 	private String img4;
 	
 	/*Es muy probable que no exceda los 10k elementos*/
 	@Column(nullable = false, length = 4, name = "stock")
 	private Integer stock;
 
+	@ManyToOne
+    @JsonBackReference //o se puede usar @JsonIgnore
+    private ShoppingCardModel shoppingCardModel;
+	
 	public long getId() {
 		return id;
 	}
