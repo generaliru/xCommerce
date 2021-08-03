@@ -40,10 +40,9 @@ public class Usuario {
 	@Column(nullable = false, length = 100)
 	private String username;
 
-	@OneToOne
-	@JsonManagedReference
-	private ShoppingCardModel shoppingCard;
-	
+	@OneToOne(targetEntity = ShoppingCardModel.class, mappedBy = "user")
+    @JsonManagedReference
+    private ShoppingCardModel shoppingCard;
 	
 	/**
 	 * @return the id

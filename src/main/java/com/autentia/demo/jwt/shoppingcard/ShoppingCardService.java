@@ -17,11 +17,10 @@ ShoppingCardRepository shoppingcardRepository;
 	
 	
 	public ShoppingCardModel saveCard (ShoppingCardModel card) {
-		Long user_id=card.getUser_id();
 		Long article_id=card.getArticle_id();
 		Long lot=card.getLot();
 		
-		if(user_id != null && article_id != null && lot != null ) {
+		if( article_id != null && lot != null ) {
 			return shoppingcardRepository.save(card);
 		}
 		return card;
