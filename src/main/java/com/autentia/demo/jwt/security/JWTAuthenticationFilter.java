@@ -1,7 +1,6 @@
 package com.autentia.demo.jwt.security;
 
 import static com.autentia.demo.jwt.security.Constants.HEADER_AUTHORIZACION_KEY;
-import static com.autentia.demo.jwt.security.Constants.ISSUER_INFO;
 import static com.autentia.demo.jwt.security.Constants.SUPER_SECRET_KEY;
 import static com.autentia.demo.jwt.security.Constants.TOKEN_BEARER_PREFIX;
 import static com.autentia.demo.jwt.security.Constants.TOKEN_EXPIRATION_TIME;

@@ -1,5 +1,7 @@
 package com.autentia.demo.jwt.usuario;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -23,8 +24,8 @@ public class Usuario {
 	@Column(nullable = false, length = 100, name = "name")
 	private String name;
 	
-	@Column(nullable = false, length = 100)
-	private String surname;
+	@Column(nullable = false, name = "date")
+	private Date date;
 	
 	@Column(nullable = false, length = 100, unique = true)
 	private String email;
@@ -64,18 +65,20 @@ public class Usuario {
 		this.name = name;
 	}
 
+	
+
 	/**
-	 * @return the surname
+	 * @return the date
 	 */
-	public String getSurname() {
-		return surname;
+	public Date getDate() {
+		return date;
 	}
 
 	/**
-	 * @param surname the surname to set
+	 * @param date the date to set
 	 */
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	/**
