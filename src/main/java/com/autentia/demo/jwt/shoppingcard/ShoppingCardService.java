@@ -17,10 +17,9 @@ ShoppingCardRepository shoppingcardRepository;
 	
 	
 	public ShoppingCardModel saveCard (ShoppingCardModel card) {
-		Long article_id=card.getArticle_id();
 		Long lot=card.getLot();
 		
-		if( article_id != null && lot != null ) {
+		if(lot != null ) {
 			return shoppingcardRepository.save(card);
 		}
 		return card;
