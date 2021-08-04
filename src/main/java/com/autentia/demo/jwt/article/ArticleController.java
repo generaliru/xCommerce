@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.autentia.demo.jwt.usuario.Usuario;
 
 @RestController
-@RequestMapping(path="/article")
+//@RequestMapping(path="/article")
 public class ArticleController {
 	
 	@Autowired
@@ -39,6 +39,7 @@ public class ArticleController {
 	 * */
 	@PostMapping("/articles/")
 	public ArticleModel saveUser(@RequestBody ArticleModel article) {
+		System.out.println(article);
 		return articleService.saveArticle(article);
 	}
 	
@@ -47,7 +48,7 @@ public class ArticleController {
 	 * @param id is the param to search with the query
 	 * @return Articles all articles obtains in the query
 	 * */
-	@GetMapping(path="/{id}")
+	@GetMapping(path="/article/{id}")
 	public Optional<ArticleModel> getArticleById(@PathVariable("id") Long id){
 		return articleService.getArticleById(id);
 	}
@@ -58,7 +59,7 @@ public class ArticleController {
 	 * @param id to delete an article.
 	 * @return boolean if the service can delete or not.
 	 * */
-	@DeleteMapping(path="/{id}")
+	@DeleteMapping(path="/article/{id}")
 	public String deleteArticle(@PathVariable("id") Long id) {
 		boolean ok = articleService.deleteArticle(id);
 		if(ok) {
@@ -74,7 +75,7 @@ public class ArticleController {
 	 * @param id is the param to search with the query
 	 * @return Articles all articles obtains in the query
 	 * */
-	@GetMapping(path="/name")
+	@GetMapping(path="/article/name")
 	public ArrayList<ArticleModel> getArticlesByName( @RequestParam(value = "name" , defaultValue="") String name){
 		return articleService.getArticlesByName(name);
 	}
@@ -84,7 +85,7 @@ public class ArticleController {
 	 * @param category is the param to search with the query
 	 * @return Articles all articles obtains in the query
 	 * */
-	@GetMapping(path="/category")
+	@GetMapping(path="/article/category")
 	public ArrayList<ArticleModel> getArticlesByCategory( @RequestParam(value = "tag" , defaultValue="") String Category){
 		return articleService.getArticlesByCategory(Category);
 	}
