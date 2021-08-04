@@ -54,7 +54,7 @@ public class ArticleModel {
 	private String img3;
 	
 	/*Las url no suelen exceder los 200 caracteres, pero es mejor dar mayor margen*/
-	@Column(nullable = false, length = 250, name = "img4")
+	@Column(length = 250, name = "img4")
 	private String img4;
 	
 	/*Es muy probable que no exceda los 10k elementos*/
