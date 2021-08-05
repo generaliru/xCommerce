@@ -1,7 +1,9 @@
 package com.autentia.demo.jwt.article;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -19,5 +21,8 @@ public interface ArticleRepository extends CrudRepository<ArticleModel , Long>{
 	 * @Param Category String that representate Category of the article.
 	 * */
 	public abstract ArrayList<ArticleModel> findByCategory(String category);
+	
+    @Query(value = "SELECT category, COUNT(category) FROM articles GROUP BY category", nativeQuery=true)
+    List<String> CategoriesAndCount();
 }
  

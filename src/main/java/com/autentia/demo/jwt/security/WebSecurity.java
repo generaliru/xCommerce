@@ -49,7 +49,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 			.csrf().disable()
 			.authorizeRequests().antMatchers(HttpMethod.POST, LOGIN_URL).permitAll().and()
 			.authorizeRequests().antMatchers(HttpMethod.POST, "/users/").permitAll().and()
-			.authorizeRequests().antMatchers(HttpMethod.GET, "/articles","/article/{id}","/article/name", "/article/category").permitAll().and()
+			.authorizeRequests().antMatchers(HttpMethod.GET, "/articles","/article/{id}","/article/name", "/article/category", "/article/categories").permitAll().and()
 			/*.authorizeRequests().antMatchers(HttpMethod.DELETE,"/article/{id}").permitAll().and() Verificar si queremos borrar
 			 * por id o simplemente no borrar*/
 			.authorizeRequests().antMatchers(HttpMethod.POST, "/articles/").permitAll()

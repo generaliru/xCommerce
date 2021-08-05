@@ -90,4 +90,9 @@ public class ArticleController {
 		return articleService.getArticlesByCategory(Category);
 	}
 	
+	@GetMapping(path="/article/categories")
+	public List<String> getCategoriesAndCount( ){
+		return articleService.getCategoriesAndCount();
+	}
+	
 }
