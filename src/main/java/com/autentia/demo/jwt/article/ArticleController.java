@@ -23,16 +23,16 @@ public class ArticleController {
 	@Autowired
 	ArticleService articleService;
 	
-	/**
-	 * Catch the content of Protocol GET
+	/**		*It works localhost:8080/articles/*
+	 * Catch the content of Protocol GET. 
 	 * @return Articles all articles obtains in the query
 	 * */
-	@GetMapping
+	@GetMapping(path="/articles")
 	public ArrayList<ArticleModel> getArticle(){
 		return articleService.getArticles();
 	}
 	
-	/**
+	/**		*It Works localhost:8080/articles/*
 	 * Catch the protocol POST to save an article in the DB
 	 * @param article is an Article that could save.
 	 * @return article saved.
@@ -43,7 +43,7 @@ public class ArticleController {
 		return articleService.saveArticle(article);
 	}
 	
-	/**
+	/**		*It works localhost:8080/article/5*
 	 * Catch the content of Protocol GET
 	 * @param id is the param to search with the query
 	 * @return Articles all articles obtains in the query
@@ -54,7 +54,7 @@ public class ArticleController {
 	}
 	
 	
-	/**
+	/**		*It works localhost:8080/article/5*
 	 * Can delete an Article in the DataBase
 	 * @param id to delete an article.
 	 * @return boolean if the service can delete or not.
@@ -70,7 +70,7 @@ public class ArticleController {
 		}
 	}
 	
-	/**
+	/**		*It works localhost:8080/article/name?name=halo*
 	 * Catch the content of Protocol GET
 	 * @param id is the param to search with the query
 	 * @return Articles all articles obtains in the query
@@ -80,7 +80,7 @@ public class ArticleController {
 		return articleService.getArticlesByName(name);
 	}
 	
-	/**
+	/** *It works localhost:8080/article/category?tag=gamer*
 	 * Catch the content of Protocol GET
 	 * @param category is the param to search with the query
 	 * @return Articles all articles obtains in the query
