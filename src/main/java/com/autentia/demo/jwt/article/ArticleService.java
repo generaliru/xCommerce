@@ -1,6 +1,7 @@
 package com.autentia.demo.jwt.article;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,5 +86,10 @@ public class ArticleService {
 	 * */
 	public ArrayList<ArticleModel> getArticlesByCategory(String category) {
 		return articleRepository.findByCategory(category);
+	}
+	
+	
+	public List<String> getCategoriesAndCount() {
+		return articleRepository.CategoriesAndCount();
 	}
 }
