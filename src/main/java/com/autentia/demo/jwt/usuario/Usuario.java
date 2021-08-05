@@ -40,11 +40,18 @@ public class Usuario {
 	@Column(nullable = false, name = "birthdate")
 	private Date date;
 	
+	@Column(length = 250, name = "img")
+	private String img;
+	
 	@OneToMany(targetEntity = ShoppingCardModel.class, cascade = CascadeType.ALL, mappedBy = "user")
 	private List<ShoppingCardModel> shoppingCard;
 
 	public long getId() {
 		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getUsername() {
@@ -63,66 +70,45 @@ public class Usuario {
 		this.password = password;
 	}
 
-	/**
-	 * @return the name
-	 */
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * @param name the name to set
-	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	/**
-	 * @return the email
-	 */
 	public String getEmail() {
 		return email;
 	}
 
-	/**
-	 * @param email the email to set
-	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	/**
-	 * @return the date
-	 */
 	public Date getDate() {
 		return date;
 	}
 
-	/**
-	 * @param date the date to set
-	 */
 	public void setDate(Date date) {
 		this.date = date;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
+	public String getImg() {
+		return img;
 	}
 
-	/**
-	 * @return the shoppingCard
-	 */
+	public void setImg(String img) {
+		this.img = img;
+	}
+
 	public List<ShoppingCardModel> getShoppingCard() {
 		return shoppingCard;
 	}
 
-	/**
-	 * @param shoppingCard the shoppingCard to set
-	 */
 	public void setShoppingCard(List<ShoppingCardModel> shoppingCard) {
 		this.shoppingCard = shoppingCard;
 	}
+
+	
 }
