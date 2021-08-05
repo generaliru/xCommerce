@@ -38,7 +38,7 @@ public class ArticleModel {
 	private String category;
 	
 	/*Puede alcanzar hasta 300 characters*/
-	@Column(nullable = false, length = 300, name = "description")
+	@Column(nullable = false, length = 400, name = "description")
 	private String description;
 	
 	/*Las url no suelen exceder los 200 caracteres, pero es mejor dar mayor margen*/
