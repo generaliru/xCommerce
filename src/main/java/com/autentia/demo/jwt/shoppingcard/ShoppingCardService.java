@@ -24,6 +24,19 @@ ShoppingCardRepository shoppingcardRepository;
 		}
 		return card;
 	}
+	
+	/* Borramos carrito*/
+	public boolean deleteCard (Long id) {
+		
+		try {
+			 shoppingcardRepository.deleteById(id);
+		return true;
+		} catch (Exception error) {
+		return false;
+		}
+	}
+
+	
 
 
  
