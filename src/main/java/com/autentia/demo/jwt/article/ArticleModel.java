@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -61,8 +62,8 @@ public class ArticleModel {
 	@Column(nullable = false, length = 4, name = "stock")
 	private Integer stock;
 	
-	@JsonProperty(access = Access.WRITE_ONLY)
-	@OneToMany(targetEntity = ShoppingCardModel.class, cascade = CascadeType.ALL, mappedBy = "article")
+	//@JsonProperty(access = Access.WRITE_ONLY)
+	@ManyToMany
 	private List<ShoppingCardModel> shoppingCard;
 	
 	/**

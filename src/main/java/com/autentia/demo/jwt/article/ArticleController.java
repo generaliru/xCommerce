@@ -90,6 +90,12 @@ public class ArticleController {
 		return articleService.getArticlesByCategory(Category);
 	}
 	
+	
+	/** *It works localhost:8080/article/categories*
+	 * Catch the content of Protocol GET
+	 * @param category is the param to search with the query
+	 * @return Articles a Count of articles in a Category and the name of categories
+	 * */
 	@GetMapping(path="/article/categories")
 	public List<String> getCategoriesAndCount( ){
 		return articleService.getCategoriesAndCount();
