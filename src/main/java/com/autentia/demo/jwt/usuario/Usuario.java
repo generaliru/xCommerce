@@ -9,7 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.autentia.demo.jwt.shoppingcard.ShoppingCardModel;
@@ -43,8 +45,8 @@ public class Usuario {
 	@Column(length = 250, name = "img")
 	private String img;
 	
-	@OneToMany(targetEntity = ShoppingCardModel.class, cascade = CascadeType.ALL, mappedBy = "user")
-	private List<ShoppingCardModel> shoppingCard;
+	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+	private ShoppingCardModel shoppingCard;
 
 	public long getId() {
 		return id;
@@ -102,13 +104,13 @@ public class Usuario {
 		this.img = img;
 	}
 
-	public List<ShoppingCardModel> getShoppingCard() {
+	public ShoppingCardModel getShoppingCard() {
 		return shoppingCard;
 	}
 
-	public void setShoppingCard(List<ShoppingCardModel> shoppingCard) {
+	public void setShoppingCard(ShoppingCardModel shoppingCard) {
 		this.shoppingCard = shoppingCard;
 	}
 
-	
+
 }

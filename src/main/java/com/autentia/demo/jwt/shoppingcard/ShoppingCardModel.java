@@ -1,11 +1,17 @@
 package com.autentia.demo.jwt.shoppingcard;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.autentia.demo.jwt.article.ArticleModel;
@@ -27,67 +33,45 @@ public class ShoppingCardModel {
 	@Column(nullable = false,name = "lot")
 	private long lot;
 	
-	@JsonProperty(access = Access.WRITE_ONLY)
-	@ManyToOne
-	private Usuario user;
+	@OneToOne
+    @JoinColumn(name = "FK_usuario", updatable = false, nullable = false)
+	private Usuario usuario;
 	
-	@ManyToOne
-	private ArticleModel article;
+	@ManyToMany(mappedBy = "shoppingCard")
+	private List<ArticleModel> article;
 
-	/**
-	 * @return the id
-	 */
 	public long getId() {
 		return id;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
 	public void setId(long id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the lot
-	 */
 	public long getLot() {
 		return lot;
 	}
 
-	/**
-	 * @param lot the lot to set
-	 */
 	public void setLot(long lot) {
 		this.lot = lot;
 	}
 
-	/**
-	 * @return the user
-	 */
-	public Usuario getUser() {
-		return user;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	/**
-	 * @param user the user to set
-	 */
-	public void setUser(Usuario user) {
-		this.user = user;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
-	/**
-	 * @return the article
-	 */
-	public ArticleModel getArticle() {
+	public List<ArticleModel> getArticle() {
 		return article;
 	}
 
-	/**
-	 * @param article the article to set
-	 */
-	public void setArticle(ArticleModel article) {
+	public void setArticle(List<ArticleModel> article) {
 		this.article = article;
 	}
+
+	
 	
 }
