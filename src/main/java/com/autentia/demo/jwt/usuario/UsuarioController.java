@@ -2,6 +2,7 @@ package com.autentia.demo.jwt.usuario;
 
 import java.util.List;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,5 +36,18 @@ public class UsuarioController {
 	@GetMapping("/users/{username}")
 	public Usuario getUsuario(@PathVariable String username) {
 		return usuarioRepository.findByUsername(username);
+	}
+	
+	/*Recupera el usuario y que usuario, Sólo nos devolvió un username*/
+	@GetMapping("/user/auth")
+	public Usuario getAuthUser() {
+		/*Para conocer el usuario que está realizando la petición y para no tener que mandarlo desde el body o algo así
+		 * el API lo puede buscar de forma automática.
+		 * Security recupera el nombre de usuario. Lanza una petición y este devuelve los datos del usuario mediante el token
+		 * Todos los tokens son diferentes*
+		 * 
+		 * Al generar la petición automáticamente devuelve valores del usuario*/
+		return usuarioRepository.findByUsername((String) (SecurityContextHolder.getContext().getAuthentication().getPrincipal()));
+
 	}
 }
