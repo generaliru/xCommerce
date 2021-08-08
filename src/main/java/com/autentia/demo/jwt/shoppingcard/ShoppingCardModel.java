@@ -35,10 +35,16 @@ public class ShoppingCardModel {
 	@Column(nullable = false,name = "lot")
 	private long lot;
 	
+	/**
+	 * Allow manage the reference between ShoppingCard and User, only card can see
+	 * the information of user of relationship and respect the logic of foreign key
+	 * and indicates that column is referenced. This last reference can´t be null never!
+	 * */
 	@OneToOne
 	@JsonManagedReference
     @JoinColumn(name = "fk_usuario", updatable = false, nullable = false)
 	private Usuario usuario;
+	
 	
 	/**
 	 * Allow create a intermediate table that includes a Foreign key of ShoppingCart
@@ -52,6 +58,11 @@ public class ShoppingCardModel {
 	        joinColumns = @JoinColumn(name = "FK_SHOPPINGCARD"),
 	        inverseJoinColumns = @JoinColumn(name="FK_ARTICLE")
 	    )
+	
+	/**
+	 * Includes a CASCADE actions
+	 * to be more efectives when remove information
+	 * */
 	@ManyToMany(cascade = CascadeType.ALL)
 	protected List<ArticleModel> articles;
 	//Is protected because is better to manipulate in the controller

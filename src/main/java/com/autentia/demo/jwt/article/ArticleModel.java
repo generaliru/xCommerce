@@ -62,6 +62,11 @@ public class ArticleModel {
 	@Column(nullable = false, length = 4, name = "stock")
 	private Integer stock;
 	
+	/**
+	 * It's the correct way to relationship with ShoppingCard.
+	 * Can relationship with the atribute "articles" of ShoppingCard
+	 * that can be a List
+	 * */
 	@ManyToMany(mappedBy = "articles")
 	private List<ShoppingCardModel> shoppingCard;
 	
