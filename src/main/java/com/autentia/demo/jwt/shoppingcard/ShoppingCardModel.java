@@ -40,7 +40,7 @@ public class ShoppingCardModel {
 	 * the information of user of relationship and respect the logic of foreign key
 	 * and indicates that column is referenced. This last reference can´t be null never!
 	 * */
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JsonManagedReference
     @JoinColumn(name = "fk_usuario", updatable = false, nullable = false)
 	private Usuario usuario;
@@ -99,6 +99,11 @@ public class ShoppingCardModel {
 	public void setArticles(List<ArticleModel> articles) {
 		this.articles = articles;
 	}
-	
 
+	@Override
+	public String toString() {
+		return "ShoppingCardModel [id=" + id + ", lot=" + lot + ", usuario=" + usuario + ", articles=" + articles + "]";
+	}
+	
+	
 }
