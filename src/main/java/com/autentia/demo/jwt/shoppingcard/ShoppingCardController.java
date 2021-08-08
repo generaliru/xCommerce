@@ -71,16 +71,16 @@ public class ShoppingCardController {
 	}
 	
 	//Metodo para borrar carrito por id
-		@DeleteMapping (path="/shoppingcard/{id}")
-		public String deleteCard(@PathVariable("id") Long id) {
-			boolean ok=shoppingcardService.deleteCard(id);
-			if(ok) {
-				return  "Ha sido quitado con exito";
-			}
-			else {
-				return "Error al quitar";
-			}
+	@DeleteMapping ("/shoppingcard/{id}")
+	public String deleteCard(@PathVariable("id") Long id) {
+		boolean ok=shoppingcardService.deleteCard(id);
+		if(ok) {
+			return  "Ha sido quitado con exito";
 		}
+		else {
+			return "Error al quitar";
+		}
+	}
 
 
 	/**		localhost:8080/articles-cart/
