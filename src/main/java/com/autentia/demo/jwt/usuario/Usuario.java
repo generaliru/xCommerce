@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.autentia.demo.jwt.shoppingcard.ShoppingCardModel;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -45,6 +46,7 @@ public class Usuario {
 	@Column(length = 250, name = "img")
 	private String img;
 	
+	@JsonBackReference
 	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
 	private ShoppingCardModel shoppingCard;
 

@@ -23,7 +23,7 @@ public class ArticleController {
 	@Autowired
 	ArticleService articleService;
 	
-	/**		*It works localhost:8080/articles/*
+	/**		*It works localhost:8080/articles*
 	 * Catch the content of Protocol GET. 
 	 * @return Articles all articles obtains in the query
 	 * */
@@ -38,7 +38,7 @@ public class ArticleController {
 	 * @return article saved.
 	 * */
 	@PostMapping("/articles/")
-	public ArticleModel saveUser(@RequestBody ArticleModel article) {
+	public ArticleModel saveArticle(@RequestBody ArticleModel article) {
 		System.out.println(article);
 		return articleService.saveArticle(article);
 	}

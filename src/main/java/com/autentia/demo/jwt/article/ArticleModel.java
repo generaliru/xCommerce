@@ -62,8 +62,7 @@ public class ArticleModel {
 	@Column(nullable = false, length = 4, name = "stock")
 	private Integer stock;
 	
-	//@JsonProperty(access = Access.WRITE_ONLY)
-	@ManyToMany
+	@ManyToMany(mappedBy = "articles")
 	private List<ShoppingCardModel> shoppingCard;
 	
 	/**
