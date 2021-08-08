@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.autentia.demo.jwt.article.ArticleModel;
 
 @RestController
-//@RequestMapping("/carrito")
+//@RequestMapping("/carrito")  Se comentó porque causaba problemas en las peticiones a la API
 public class ShoppingCardController {
 	
 	@Autowired
 	ShoppingCardService shoppingcardService;
 	
-	/**		localhost:8080/shoppingcards*
+	/**		*It works localhost:8080/shoppingcards*
 	 * Catch the content of Protocol GET. 
 	 * @return Articles all articles obtains in the query
 	 * */

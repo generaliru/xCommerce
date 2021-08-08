@@ -43,13 +43,19 @@ public class Usuario {
 	@Column(nullable = false, name = "birthdate")
 	private Date date;
 	
+	//Image can be null
 	@Column(length = 250, name = "img")
 	private String img;
 	
+	/**
+	 * Includes a back reference that prevent a recursive answer from a petition on POST Man
+	 * and API. Added CASCADE to be more efective in actions
+	 * */
 	@JsonBackReference
 	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
 	private ShoppingCardModel shoppingCard;
 
+	/*Getters and Setters*/
 	public long getId() {
 		return id;
 	}
