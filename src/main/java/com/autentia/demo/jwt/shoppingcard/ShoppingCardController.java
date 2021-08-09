@@ -35,6 +35,8 @@ public class ShoppingCardController {
 		return shoppingcardService.getCards();
 	}
 	
+	
+	
 	/**		*It Works localhost:8080/shoppingcards/*
 	 * Catch the protocol POST to save an shoppingCard in the DB
 	 * @param card is an ShoppingCard that could save.
@@ -96,5 +98,13 @@ public class ShoppingCardController {
         
         shoppingCard.articles.add(article);
     }
+	
+	/**   *   http://localhost:8080/cartbytoken*
+	 * Allow obtains a cart by token of user logged.
+	 * */
+	@GetMapping("/cartbytoken")
+	public ShoppingCardModel getCartByToken() {
+		return shoppingcardService.getCartUser();
+	}
 
 }
