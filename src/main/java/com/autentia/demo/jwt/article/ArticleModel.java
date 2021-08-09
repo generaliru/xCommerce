@@ -67,6 +67,7 @@ public class ArticleModel {
 	 * Can relationship with the atribute "articles" of ShoppingCard
 	 * that can be a List
 	 * */
+	@JsonProperty(access = Access.WRITE_ONLY)
 	@ManyToMany(mappedBy = "articles")
 	private List<ShoppingCardModel> shoppingCard;
 	
@@ -223,5 +224,11 @@ public class ArticleModel {
 	public void setShoppingCard(List<ShoppingCardModel> shoppingCard) {
 		this.shoppingCard = shoppingCard;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "ArticleModel [id=" + id + ", name=" + name + ", price=" + price + ", category=" + category
+				+ ", description=" + description + ", img1=" + img1 + ", img2=" + img2 + ", img3=" + img3 + ", img4="
+				+ img4 + ", stock=" + stock + ", shoppingCard=" + shoppingCard + "]";
+	}
 }
