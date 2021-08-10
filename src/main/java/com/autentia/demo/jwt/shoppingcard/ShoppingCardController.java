@@ -91,12 +91,8 @@ public class ShoppingCardController {
 	 * @param shoppingCard is an ShoppingCard that contains an article
 	 * */
 	@PostMapping("/articles-cart/")
-	public void addArticleInCart(@RequestBody ShoppingCardModel shoppingCard, @RequestBody ArticleModel article){
-        if(shoppingCard.getArticles() == null){
-            shoppingCard.setArticles(new ArrayList<>());
-        }
-        
-        shoppingCard.articles.add(article);
+	public boolean addArticleInCart(@RequestBody ArticleModel article){
+        return shoppingcardService.saveArticleInShoppingCard(article);
     }
 	
 	/**   *   http://localhost:8080/cartbytoken*

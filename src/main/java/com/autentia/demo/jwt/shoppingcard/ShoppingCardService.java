@@ -21,12 +21,9 @@ public class ShoppingCardService {
 	
 	@Autowired
 	UsuarioRepository usuarioRepository;
-<<<<<<< HEAD
-=======
 	
 	@Autowired
 	ArticleRepository articleRepository;
->>>>>>> 3aeeb2b9b7ea0ca8880c0b69e5c55eb8d58259f3
 	
 	public ArrayList<ShoppingCardModel> getCards(){
 		return (ArrayList<ShoppingCardModel>) shoppingcardRepository.findAll();
@@ -63,7 +60,20 @@ public class ShoppingCardService {
 		}
 	}
 
-	
+	public boolean saveArticleInShoppingCard(ArticleModel articleModel) {
+		try {
+			Optional<ArticleModel> articleModel2 = articleRepository.findById(articleModel.getId());
+			Usuario usuario = usuarioRepository.findByUsername((String) (SecurityContextHolder.getContext().getAuthentication().getPrincipal()));			
+			ShoppingCardModel shoppingCardModel = usuario.getShoppingCard();
+			List<ArticleModel> articleModels = shoppingCardModel.getArticles();
+			articleModels.add(articleModel2.get());
+			shoppingCardModel.setArticles(articleModels);
+			shoppingcardRepository.save(shoppingCardModel);
+			return true;	
+		}catch(Exception error) {
+			return false;
+		}
+	}
 
 	/**
 	 * Obtains a ShoppingCart by the token of login of the user.
